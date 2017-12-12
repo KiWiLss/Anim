@@ -27,4 +27,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    compile ( 'com.github.the-pig-of-jungle:SmartShow:v1.0.2' ){
+        //去除design包的依赖，其一，你不一定用到SmartSnackbar；其二，你项目使用的版本不一定和库中所用相同
+        exclude group: 'com.android.support'
+    }
 }

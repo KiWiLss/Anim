@@ -1,7 +1,11 @@
 package com.magicsoft.anim;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+
+import com.magicsoft.anim.activity.ToastActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,5 +16,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+    public void goToNext(Class<?>clz){
+        startActivity(new Intent(this,clz));
+    }
+
+    public void toast(View view) {
+        goToNext(ToastActivity.class);
     }
 }
