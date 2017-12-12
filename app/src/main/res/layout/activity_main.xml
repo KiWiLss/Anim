@@ -18,7 +18,12 @@
             android:textAllCaps="false"
             android:onClick="toast"/>
 
-
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="toast2"
+          android:textAllCaps="false"
+          android:onClick="toast2"/>
   </LinearLayout>
 
 </ScrollView>
