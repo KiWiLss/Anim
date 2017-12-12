@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.magicsoft.anim.activity.FrameActivity;
 import com.magicsoft.anim.activity.ToastActivity;
 import com.magicsoft.anim.activity.ToastActivity2;
 
@@ -30,5 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void toast2(View view) {
         goToNext(ToastActivity2.class);
+    }
+
+    public void frame(View view) {
+        goToNext(FrameActivity.class);
     }
 }

@@ -14,12 +14,11 @@ public class MyToast2 {
     private static Toast mToast;
     private volatile static MyToast2 instance;
     private static CharSequence mText;
-    private MyToast2(Context context, CharSequence text, int duration) {
+    private MyToast2(Context context) {
         View v = LayoutInflater.from(context).inflate(R.layout.eplay_toast, null);
         if (mToast==null){
             mToast = new Toast(context);
-            mToast.setDuration(duration);
-            setText(text);
+            mToast.setDuration(Toast.LENGTH_SHORT);
             mToast.setView(v);
         }
     }
@@ -34,24 +33,18 @@ public class MyToast2 {
 
 
 
-    public static MyToast2 makeText(Context context, CharSequence text, int duration) {
+    public static MyToast2 makeText(Context context) {
         if (instance==null){
             synchronized (MyToast2.class){
                 if (instance==null) {
-                    return new MyToast2(context, text, duration);
+                    return new MyToast2(context);
                 }
             }
         }
-        mText=text;
        return instance;
     }
 
-    public static MyToast2 makeText(Context context,int duration) {
-        if (instance==null){
-            return new MyToast2(context, "", duration);
-        }
-        return instance;
-    }
+
 
     public void show() {
         if (mToast != null) {
@@ -64,6 +57,13 @@ public class MyToast2 {
         }
         return this;
     }
+
+    public void cancel(){
+        if (mToast!=null){
+            mToast.cancel();
+        }
+    }
+
 
 
 }

@@ -56,12 +56,12 @@ public class ToastActivity2 extends AppCompatActivity {
 
     public void defaultBottom(View view) {
         //SmartToast.showAtLocation("自定义位置", Gravity.CENTER,0,0);
-        MyToast2.makeText(getApplicationContext(),"自定义",0).setGravity(Gravity.CENTER,0,0).show();
+        MyToast2.makeText(getApplicationContext()).setText("自定义一").setGravity(Gravity.CENTER,0,0).show();
 
     }
 
     public void defaultCenter(View view) {
-        MyToast2.makeText(getApplicationContext(),0).setText("自定义再次").setGravity(Gravity.CENTER,0,0).show();
+        MyToast2.makeText(getApplicationContext()).setText("自定义再次").setGravity(Gravity.CENTER,0,0).show();
         //SmartToast.showInCenter("默认中间");
         //TUtils.show("默认中间", Gravity.CENTER);
         //MyToast.makeText(getApplicationContext(),"自定义换文字",0).show();
