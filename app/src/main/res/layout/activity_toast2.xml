@@ -66,6 +66,24 @@
         </LinearLayout>
 
 
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="简单文字"
+          android:onClick="simple"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="简单文字 ,正确"
+            android:onClick="simpleSure"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="简单文字 ,错误"
+            android:onClick="simpleFalse"/>
     </LinearLayout>
 
 </ScrollView>

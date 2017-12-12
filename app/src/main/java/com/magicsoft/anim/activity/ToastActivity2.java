@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.magicsoft.anim.R;
+import com.magicsoft.anim.utils.MyToast2;
 import com.magicsoft.anim.utils.TUtils;
 import com.magicsoft.anim.utils.TUtils2;
 
@@ -55,11 +56,17 @@ public class ToastActivity2 extends AppCompatActivity {
 
     public void defaultBottom(View view) {
         //SmartToast.showAtLocation("自定义位置", Gravity.CENTER,0,0);
+        MyToast2.makeText(getApplicationContext(),"自定义",0).setGravity(Gravity.CENTER,0,0).show();
+
     }
 
     public void defaultCenter(View view) {
+        MyToast2.makeText(getApplicationContext(),0).setText("自定义再次").setGravity(Gravity.CENTER,0,0).show();
         //SmartToast.showInCenter("默认中间");
-        TUtils.show("默认中间", Gravity.CENTER);
+        //TUtils.show("默认中间", Gravity.CENTER);
+        //MyToast.makeText(getApplicationContext(),"自定义换文字",0).show();
+
+
     }
 
     public void defaultTop(View view) {
@@ -82,5 +89,17 @@ public class ToastActivity2 extends AppCompatActivity {
 
     public void longTimeCenter(View view) {
        // SmartToast.showLongInCenter("长时间中间");
+    }
+
+    public void simpleFalse(View view) {
+
+    }
+
+    public void simpleSure(View view) {
+
+    }
+
+    public void simple(View view) {
+
     }
 }
