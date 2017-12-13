@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.magicsoft.anim.R;
-
-import me.drakeet.materialdialog.MaterialDialog;
+import com.magicsoft.anim.utils.InitDialog;
+import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 
 /**
  * -----------------------------------------------------------------
@@ -26,17 +26,69 @@ import me.drakeet.materialdialog.MaterialDialog;
  */
 
 public class DialogActivity extends AppCompatActivity {
+
+
+    private LoadingDialog loadingDialog;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
 
+       /* loadingDialog = new LoadingDialog(this);
+
+        loadingDialog.setLoadingText("加载中");
+        loadingDialog.setInterceptBack(true);
+        loadingDialog.setDrawColor(Color.RED);
+
+        loadingDialog.show();*/
+
+        InitDialog.getInstance().show(true,this);
 
 
+        getWindow().getDecorView().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+             InitDialog.getInstance().dismiss();
+            }
+        }, 5000);
     }
 
     public void showOne(View view) {
-        MaterialDialog materialDialog = new MaterialDialog(this);
-        materialDialog.show();
+      /*  final MaterialDialog materialDialog = new MaterialDialog(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null);
+        materialDialog.setView(dialogView);
+        materialDialog.setCanceledOnTouchOutside(true);
+        materialDialog.show();*/
+       /* materialDialog.setCanceledOnTouchOutside(true);
+        materialDialog.setTitle("简单测试");
+        materialDialog.setMessage("随意测试");
+       materialDialog.setPositiveButton("确定", new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               materialDialog.dismiss();
+           }
+       }).setNegativeButton("取消", new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               materialDialog.dismiss();
+           }
+       });
+        materialDialog.show();*/
+    }
+
+    public void showOld(View view) {
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null);
+        builder.setView(dialogView);
+        builder.setCancelable(true);
+        builder.show();*/
+//        builder.setTitle("原生")
+//                .setMessage("原生样式测试")
+//                .setCancelable(true)
+//                .setNegativeButton("取消",null)
+//                .setPositiveButton("确定",null)
+//                .create().show();
     }
 }
