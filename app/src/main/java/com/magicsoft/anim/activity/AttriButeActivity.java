@@ -15,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.magicsoft.anim.R;
 
@@ -47,8 +50,18 @@ public class AttriButeActivity extends AppCompatActivity {
         mImg = (ImageView) findViewById(R.id.img_attribute_icon);
 
 
-
-
+        //方法一
+        //AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animator);//在xml中已经设置了动画,可以直接调用
+        //方法二
+        LinearLayout ll = (LinearLayout) findViewById(R.id.ll_attribute_layoutanim);
+        //设置过渡动画
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0, 1, 0, 1);
+        scaleAnimation.setDuration(2000);
+        //设置布局动画的显示属性,第一个参数是动画,第二个参数是每个控件完成动画的延迟,为0时不能设置执行顺序
+        LayoutAnimationController layoutAnimationController = new LayoutAnimationController(scaleAnimation, 0.5f);
+        //设置执行顺序,LayoutAnimationController.ORDER_NORMAL,顺序;ORDER_RANDOM,随机;ORDER_REVERSE逆序
+        layoutAnimationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        ll.setLayoutAnimation(layoutAnimationController);
     }
 
     public void alpha(View view) {
@@ -187,7 +200,5 @@ public class AttriButeActivity extends AppCompatActivity {
                 Log.e(TAG, "run: ***"+ Thread.currentThread().getName());
             }
         }).start();
-
-
     }
 }

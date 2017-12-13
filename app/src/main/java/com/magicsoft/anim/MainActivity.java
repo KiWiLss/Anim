@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.magicsoft.anim.activity.AttriButeActivity;
 import com.magicsoft.anim.activity.ComplementActivity;
+import com.magicsoft.anim.activity.DialogActivity;
 import com.magicsoft.anim.activity.FrameActivity;
 import com.magicsoft.anim.activity.ToastActivity;
 import com.magicsoft.anim.activity.ToastActivity2;
@@ -47,5 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void complement2(View view) {
         goToNext(AttriButeActivity.class);
+    }
+
+    public void dialog(View view) {
+        goToNext(DialogActivity.class);
     }
 }
