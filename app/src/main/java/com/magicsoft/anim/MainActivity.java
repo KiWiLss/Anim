@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.magicsoft.anim.activity.AttriButeActivity;
 import com.magicsoft.anim.activity.ComplementActivity;
 import com.magicsoft.anim.activity.FrameActivity;
 import com.magicsoft.anim.activity.ToastActivity;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Animator animator = AnimatorInflater.loadAnimator(this, R.anim.anim_set);
 
 
     }
@@ -40,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void complement(View view) {
         goToNext(ComplementActivity.class);
+    }
+
+    public void complement2(View view) {
+        goToNext(AttriButeActivity.class);
     }
 }
