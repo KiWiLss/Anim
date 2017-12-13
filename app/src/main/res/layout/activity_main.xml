@@ -30,6 +30,12 @@
           android:text="帧动画"
           android:textAllCaps="false"
           android:onClick="frame"/>
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="补间动画"
+          android:textAllCaps="false"
+          android:onClick="complement"/>
   </LinearLayout>
 
 </ScrollView>

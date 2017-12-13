@@ -22,6 +22,7 @@
         <activity android:name=".activity.ToastActivity2"/>
 
         <activity android:name=".activity.FrameActivity"/>
+        <activity android:name=".activity.ComplementActivity"/>
     </application>
 
 </manifest>
