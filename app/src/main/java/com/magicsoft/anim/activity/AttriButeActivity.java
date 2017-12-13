@@ -1,10 +1,20 @@
 package com.magicsoft.anim.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.magicsoft.anim.R;
@@ -27,6 +37,7 @@ import com.magicsoft.anim.R;
 
 public class AttriButeActivity extends AppCompatActivity {
 
+    public static final String TAG = "MMM";
     private ImageView mImg;
 
     @Override
@@ -44,6 +55,139 @@ public class AttriButeActivity extends AppCompatActivity {
         //ObjectAnimator objectAnimator = new ObjectAnimator();
         ObjectAnimator alpha = ObjectAnimator.ofFloat(mImg, "alpha", 1.0f, 0.5f, 0.1f, 0.5f, 1.0f);
         alpha.setDuration(4000);
+        alpha.setInterpolator(new AccelerateDecelerateInterpolator());
         alpha.start();
+    }
+
+    public void rotate(View view) {
+        //rotation绕屏幕的z轴旋转;rotationX绕屏幕的x轴旋转;rotationY绕屏幕的y轴旋转
+        ObjectAnimator rotate = ObjectAnimator.ofFloat(mImg, "rotationX", 0, 45, 90, 180);
+        rotate.setDuration(3000);
+        rotate.setRepeatCount(1);
+        rotate.setRepeatMode(ValueAnimator.REVERSE);
+
+
+        rotate.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                Log.e(TAG, "onAnimationStart: ****" );
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                //super.onAnimationEnd(animation);
+                Log.e(TAG, "onAnimationEnd: ****" );
+            }
+        });
+        rotate.start();
+      /*  rotate.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                Log.e(TAG, "onAnimationStart: " );
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                Log.e(TAG, "onAnimationEnd: " );
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+                Log.e(TAG, "onAnimationCancel: " );
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+                Log.e(TAG, "onAnimationRepeat: " );
+            }
+        });*/
+    }
+
+    public void translate(View view) {
+        ObjectAnimator translateX = ObjectAnimator.ofFloat(mImg, "translationX", 0, 100, 200);
+        translateX.setDuration(2000);
+        ObjectAnimator translateY = ObjectAnimator.ofFloat(mImg, "translationY", 0, 100);
+        translateY.setDuration(2000);
+        translateX.start();
+        translateY.start();
+
+    }
+
+    public void scale(View view) {
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(mImg, "scaleX", 1, 0.5f, 1.0f,2,3);
+        scaleX.setDuration(3000);
+        scaleX.start();
+    }
+
+    public void set(View view) {
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(mImg, "scaleX", 1, 0.5f, 1.0f,2,3);
+        scaleX.setDuration(3000);
+
+        ObjectAnimator translateX = ObjectAnimator.ofFloat(mImg, "translationX", 0, 100, 200);
+        translateX.setDuration(3000);
+
+        //一起执行
+//        scaleX.start();
+//        translateX.start();
+        //一起执行
+        AnimatorSet animatorSet = new AnimatorSet();
+//        animatorSet.play(scaleX).with(translateX);
+//        animatorSet.start();
+        //先后执行
+        animatorSet.play(scaleX).before(translateX);
+        animatorSet.start();
+    }
+
+    public void xmlset(View view) {
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.anim_alpha);
+        //设置控件
+        animator.setTarget(mImg);
+        //开启动画
+        animator.start();
+
+    }
+
+    public void propertyVaules(View view) {//帮助同时控制多个动画
+        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 1, 0.5f, 2);
+        PropertyValuesHolder translationX = PropertyValuesHolder.ofFloat("translationX", 100, 200, 300);
+
+        ObjectAnimator.ofPropertyValuesHolder(mImg,scaleX,translationX).setDuration(2000).start();
+
+    }
+
+    public void valueanimator(View view) {
+
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(1, 0, 1);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float result= (float) valueAnimator.getAnimatedValue();
+                mImg.setAlpha(result);
+            }
+        });
+        valueAnimator.setDuration(2000);
+        //valueAnimator.setTarget(mImg);
+        valueAnimator.start();
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void animator(View view) {
+        mImg.animate()
+                .alpha(0.5f)
+                .x(300)
+                .setDuration(2000)
+                .withStartAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.e(TAG, "run: "+ Thread.currentThread().getName());
+                    }
+                }).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "run: ***"+ Thread.currentThread().getName());
+            }
+        }).start();
+
+
     }
 }

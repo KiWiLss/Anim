@@ -21,6 +21,9 @@ import com.magicsoft.anim.MyApp;
 
 
 public class TUtils {
+
+
+
     static Toast toast;
 
     private TUtils() {

@@ -148,5 +148,22 @@ public class ComplementActivity extends AppCompatActivity {
         animationSet.setFillAfter(true);
         animationSet.setDuration(2000);
         mImgIcon.startAnimation(animationSet);
+        //对动画监听
+        scaleAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 }
