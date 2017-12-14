@@ -38,7 +38,6 @@ public class InitDialog {
     }
 
     public void show(boolean isBlodBg,Context context){
-
             if (isBlodBg) {
                 dialog=new Dialog(context, R.style.custom_dialog);
             }else {
@@ -51,6 +50,7 @@ public class InitDialog {
     public void dismiss(){
         if (dialog!=null){
             dialog.dismiss();
+            dialog=null;
         }
     }
 

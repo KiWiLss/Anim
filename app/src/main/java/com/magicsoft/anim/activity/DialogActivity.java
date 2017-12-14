@@ -1,5 +1,6 @@
 package com.magicsoft.anim.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -42,14 +43,26 @@ public class DialogActivity extends AppCompatActivity {
         loadingDialog.setInterceptBack(true);
         loadingDialog.setDrawColor(Color.RED);
 
-        loadingDialog.show();*/
+        loadingDialog.show();
+        loadingDialog.close();*/
 
-        InitDialog.getInstance().show(true,this);
+        //InitDialog.getInstance().show(false,this);
 
+
+        final LoadingDialog ld = new LoadingDialog(this);
+        ld.setLoadingText("加载中")
+                .setSuccessText("加载成功")//显示加载成功时的文字
+                //.setFailedText("加载失败")
+                .setInterceptBack(true)
+                //.setLoadSpeed(new LoadingDialog.Speed())
+                //.setRepeatCount(repeatTime)
+                .setDrawColor(Color.YELLOW)
+                .show();
 
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
+                ld.loadSuccess();
              InitDialog.getInstance().dismiss();
             }
         }, 5000);
