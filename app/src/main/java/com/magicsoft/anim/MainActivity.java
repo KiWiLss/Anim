@@ -53,4 +53,8 @@ public class MainActivity extends AppCompatActivity {
     public void dialog(View view) {
         goToNext(DialogActivity.class);
     }
+
+    public void translation(View view) {
+        //goToNext(EuclidActivity.class);
+    }
 }

@@ -49,6 +49,12 @@
           android:text="dialog"
           android:textAllCaps="false"
           android:onClick="dialog"/>
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="translation"
+          android:textAllCaps="false"
+          android:onClick="translation"/>
   </LinearLayout>
 
 </ScrollView>

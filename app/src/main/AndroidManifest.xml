@@ -25,6 +25,8 @@
         <activity android:name=".activity.ComplementActivity"/>
         <activity android:name=".activity.AttriButeActivity"/>
         <activity android:name=".activity.DialogActivity"/>
+
+
     </application>
 
 </manifest>
