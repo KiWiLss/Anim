@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.magicsoft.translate.R;
 
-import immortalz.me.library.TransitionsHeleper;
-
 /**
  * -----------------------------------------------------------------
  * Copyright (C) 2014-2016, by your company, All rights reserved.
@@ -46,7 +44,7 @@ public class ImageViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                TransitionsHeleper.startActivity(ImageViewActivity.this, ImageDetailActivity.class, iv, imgUrl);
+
             }
         });
     }

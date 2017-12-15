@@ -13,5 +13,16 @@
         android:text="imageview"
         android:onClick="imageview"/>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fragment"
+        android:textAllCaps="false"
+        android:onClick="fragment"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="activity"
+        android:textAllCaps="false"
+        android:onClick="activity"/>
 </LinearLayout>
