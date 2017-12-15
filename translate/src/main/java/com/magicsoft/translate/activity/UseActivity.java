@@ -80,6 +80,22 @@ public class UseActivity extends AppCompatActivity {
         });
 
 
+        mImgThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //进入activity,activity里面是fragment
+
+                Intent intent = new Intent(UseActivity.this, UseToActivity.class);
+                ActivityTransitionLauncher
+                        .with(UseActivity.this)
+                        .from(view)
+                        .launch(intent);
+
+            }
+        });
+
+
     }
 
     @Override

@@ -33,4 +33,8 @@ public class MainActivity extends AppCompatActivity {
     public void activity(View view) {
         startActivity(new Intent(this, UseActivity.class));
     }
+
+    public void listClick(View view) {
+
+    }
 }

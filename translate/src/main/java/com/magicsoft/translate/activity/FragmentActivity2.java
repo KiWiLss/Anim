@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.kogitune.activity_transition.ActivityTransition;
+import com.kogitune.activity_transition.ExitActivityTransition;
 import com.magicsoft.translate.R;
-import com.magicsoft.translate.fragment.StatusFragment;
+import com.magicsoft.translate.fragment.StatusFragment2;
 
 /**
  * -----------------------------------------------------------------
@@ -25,7 +27,10 @@ import com.magicsoft.translate.fragment.StatusFragment;
  * @description ${DESCRIPTION}
  */
 
-public class FragmentActivity extends AppCompatActivity {
+public class FragmentActivity2 extends AppCompatActivity {
+
+    private ExitActivityTransition start;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +39,18 @@ public class FragmentActivity extends AppCompatActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
                 supportFragmentManager.beginTransaction();
+        StatusFragment2 statusFragment2 = new StatusFragment2();
+        fragmentTransaction.add(R.id.fl_fragment_one,statusFragment2).commit();
 
-        fragmentTransaction.add(R.id.fl_fragment_one,new StatusFragment()).commit();
+        start = ActivityTransition.with(getIntent())
+                .to(statusFragment2.mImg)
+                .start(savedInstanceState);
 
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        start.exit(this);
     }
 }

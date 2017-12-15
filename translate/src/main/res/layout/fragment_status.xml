@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/img_fragment_status_icon"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"

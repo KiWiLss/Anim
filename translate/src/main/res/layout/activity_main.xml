@@ -25,4 +25,12 @@
         android:text="activity"
         android:textAllCaps="false"
         android:onClick="activity"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="列表"
+        android:textAllCaps="false"
+        android:onClick="listClick"/>
+
 </LinearLayout>
